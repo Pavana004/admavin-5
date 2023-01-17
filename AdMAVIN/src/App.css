@@ -1,15 +1,65 @@
-.App{
-  align-items: center;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+body{
+    background-color: black;
 }
-.infinity{
-  background-color: antiquewhite;
-  margin: 10px;
-  padding: 10px;
-  width: 200px;
-  display: flex;
-  text-align: center;
+.App{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+
+.initialbox{
+     width: 500px;
+     height: 500px;
+     border: 2px solid gray;
+}
+
+.secondbox{
+    width: 5px;
+    height: 500px;
+    border: 2px solid gray;
+    margin-left: 250px;
+}
+.secondbox1{
+    width: 500px;
+    height: 500px;
+    border: 2px solid gray;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    position: absolute;
+    margin-top: 250px
+}
+.cont{
+    display: flex;
+    position: relative;
+} 
+.box2{
+    width: 250px;
+    height: 250px;
+    border: 2px solid gray;
+    position: absolute;
+}
+.thirdbox{
+    width: 5px;
+    height: 250px;
+    border: 2px solid gray;
+    margin-left: 125px;
+    position:absolute;
+}
+
+.thirdbox1{
+    width:250px;
+    height: 125px;
+    border: 2px solid gray;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    position:absolute;
+    margin-top: 125px;
+
+}
+.btn{
+    margin-left: 440px;
+    margin-top: 10px;
 }

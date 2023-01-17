@@ -1,42 +1,25 @@
 import { useState } from 'react'
 import './App.css'
-import InfiniteScroll from 'react-infinite-scroll-component';
+import Box1 from './Box1'
+
 
 function App() {
 
-  const[data,setData]=useState(Array.from({length:20}))
-  const [more,setMore] = useState(true)  
-  
-  const fetchData =  ()=>{
-    if(data.length < 200){
-      setTimeout(()=>{
-        setData(data.concat(Array.from({length:20})))
-      },500)
-    }else{
-      setMore(false);
-    }
-  
-  }
-   
+  const [show, setShow] = useState(false)
 
   return (
-    <div className="App">
-     <h3>INFINITY SCROLL</h3>
-      <InfiniteScroll dataLength={data.length} next={fetchData}
-      loader={<h4>Loading...</h4>}
-      hasMore={more}
-      endMessage={<h4>end...</h4>}
+    <>
+    <button className='btn bg-danger' onClick={() => setShow(false)}>clear</button>
+      <div className="App">
+        <div className='initialbox' onClick={() => setShow(true)}>
+          {show ? <Box1 /> : null}
 
-      >
+        </div>
 
-        {data.map((res,key)=>{
-          return(
-            <div className='infinity'>Infinity Scroll-{key +1}</div>
-          )
-        })}
+      </div>
+      
+    </>
 
-      </InfiniteScroll>
-    </div>
   )
 }
 
