@@ -1,49 +1,41 @@
 import { useState } from 'react'
 import './App.css'
-
-
-
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 function App() {
 
-  const [arr, setArr] = useState([]);
-  const [select, setSelect] = useState("");
+  const[data,setData]=useState(Array.from({length:20}))
+  const [more,setMore] = useState(true)  
+  
+  const fetchData =  ()=>{
+    if(data.length < 200){
+      setTimeout(()=>{
+        setData(data.concat(Array.from({length:20})))
+      },500)
+    }else{
+      setMore(false);
+    }
+  
+  }
+   
 
-  const onAddClick = () => {
-    const temp = [...arr];
-    temp.push(temp.length + "item");
-    setArr(temp)
-  }
-  const onRemoveClick = () => {
-    const temp = [...arr];
-    temp.splice(temp.length - 1, 1)
-    setArr(temp)
-  }
-  const onRemoveAllClick = () => {
-    const temp = [...arr];
-    temp.splice(temp.length - "item")
-    setArr(temp)
-  }
   return (
     <div className="App">
-      <div className='box'>
-        <div className='value' onChange={() => setSelect("item-1")}>item-1</div>
-        <div className='value'>item-2</div>
-        <div className='value'>item-3</div>
-      </div>
-      <div className='add' onClick={onAddClick}>Add</div>
-      <div className='remove' onClick={onRemoveClick}>Remove</div>
-      <div className='remove' onClick={onRemoveAllClick}>Remove All</div>
-      <div className='box'>
-        {
-          arr.map((res) => {
-            return (
-              <div className='value' >{res}</div>
-            )
-          })
-        }
-      </div>
+     <h3>INFINITY SCROLL</h3>
+      <InfiniteScroll dataLength={data.length} next={fetchData}
+      loader={<h4>Loading...</h4>}
+      hasMore={more}
+      endMessage={<h4>end...</h4>}
 
+      >
+
+        {data.map((res,key)=>{
+          return(
+            <div className='infinity'>Infinity Scroll-{key +1}</div>
+          )
+        })}
+
+      </InfiniteScroll>
     </div>
   )
 }
